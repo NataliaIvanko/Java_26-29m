@@ -42,6 +42,9 @@ public class Main {
         System.out.println(findEmails(list1, list2, list3));
 
     }
+    //Дан лист Вook{String title, Author author}. Естественно, один автор Author{firstName, lastName} может быть автором нескольких книг.
+    // Необходимо получить список всех авторов.
+
     public static List<Author> getAuthors(List<Book> bookList){
         Set<Author>authors = new HashSet<>();
         for(Book b: bookList){
@@ -51,19 +54,20 @@ public class Main {
         return authorList;
 
     }
+    //Дан список User<name, email>, необходимо написать метод, который определит, есть ли в списке дубли.
+
     public static boolean nonUniqueElements(List<Users>usersList){
         Set<Users> duplicates = new HashSet<>(usersList);
-        /*
-       for(Users u : usersList){
-          if(!duplicates.contains(u)){
-              duplicates.add(u);
-          }
-       }*/
+
         if (duplicates.size()< usersList.size()){
             return true;
         }
         return false;
     }
+
+    //Дано несколько списков User-ов{fFame, lName, email},
+    // необходимо написать метод, который подготовит список всех email-ов для рассылки
+
     public static Set<String>findEmails(List<Users1>list1, List<Users1>list2, List<Users1>list3){
         List<Users1>resList = new ArrayList<>();
         resList.addAll(list1);
