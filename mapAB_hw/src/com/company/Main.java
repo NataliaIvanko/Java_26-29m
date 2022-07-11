@@ -6,8 +6,10 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
+
         //1)    Дана Map<String, String>, если в ней есть ключ ‘a’ и ‘b’,
         // то нужно  создать новый ключ ‘ab’ с суммой значений от ключей a и b.
+
 
         Map<String, String> mapStr = new HashMap<>();
         mapStr.put("a", "Hi");
