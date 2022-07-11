@@ -13,7 +13,10 @@ public class Main {
     strList.add("Peach");
     strList.add("Apple");
     strList.add("citrus fruit");
-        System.out.println(uniqueTwoAndMoreWords(strList));
+    strList.add(" Orange");
+
+    System.out.println(uniqueTwoAndMoreWords(strList));
+    System.out.println("2nd option: " + uniqueTwoAndMoreWords1(strList));
 
     List<Student>students = new ArrayList<>();
     students.add(new Student("Ann Williams", 5));
@@ -47,7 +50,7 @@ public class Main {
 
      while(it.hasNext()){
          String s = it.next();
-            if(s.contains(" ")){
+            if (s.contains(" ")) {
                newList.add(s);
         }
       }
@@ -56,16 +59,15 @@ public class Main {
 
     public static List<Student> threeStudents(List<Group> listOfGroups){
 
+        List<Student>resultList = new ArrayList<>();
+        if(listOfGroups.isEmpty()) return resultList;
         List<Student> newList = new ArrayList<>();
 
         for(Group g : listOfGroups){
             newList.addAll(g.student);
 
         }
-
-        List<Student>resultList = new ArrayList<>();
-
-        TreeSet<Student> newSet = new TreeSet<>(newList);
+       TreeSet<Student> newSet = new TreeSet<>(newList);
         resultList.add(newSet.pollLast());
         resultList.add(newSet.pollLast());
         resultList.add(newSet.pollLast());
@@ -80,5 +82,17 @@ public class Main {
 */
 return resultList;
 
+    }
+    public static List<String>uniqueTwoAndMoreWords1(List<String>strList){
+        Set<String>strSet = new HashSet<>();
+        List<String>newList = new ArrayList<>();
+
+        for(String s : strList){
+            if(s!= null && s.trim().split(" ").length>=2){
+                strSet.add(s);
+            }
+        }
+        newList.addAll(strSet);
+        return newList;
     }
 }
