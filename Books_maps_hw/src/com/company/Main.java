@@ -6,8 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         //2)     Дан список Book{String author, String title}.
-        // Необходимо сформировать map<String, List<String>> ,
-        // где ключом будет автор, а значением - список книг данного автора.
+        // Необходимо сформировать map<String, List<String>> ,где ключом будет автор, а значением - список книг данного автора.
 
         Map<String, ArrayList<String>>mapBooks = new HashMap<>();
         List<Books> books = new ArrayList<>();
@@ -37,6 +36,9 @@ public class Main {
 
 
     }
+
+    //2)     Дан список Book{String author, String title}.
+    // Необходимо сформировать map<String, List<String>> , где ключом будет автор, а значением - список книг данного автора.
     public static Map<String, List<String>>mapBooks(List<Books>books){
 
         Map<String, List<String>>result = new HashMap<>();
@@ -57,7 +59,7 @@ public class Main {
 
     public static Map<Book1, Integer>countBooks(List<Book1> listOfBooks){
         Map<Book1, Integer>result = new HashMap<>();
-        if(listOfBooks == null || listOfBooks.isEmpty())return result;
+
         for(Book1 b: listOfBooks){
             result.put(b, result.getOrDefault(b, 0)+1);
         }
