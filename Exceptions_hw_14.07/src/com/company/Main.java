@@ -14,9 +14,10 @@ public class Main {
         System.out.println(catchException(list));
         System.out.println(getErrors(list));
         int[] newArr = new int[10];
-
+        int[][] newArr1 = new int[5][5];
 
         System.out.println(getSize(newArr));
+        System.out.println(getArray(newArr1));
 
     }
     public static List<String> catchException(List<String> list){
@@ -49,10 +50,19 @@ public class Main {
     // Необходимо, что бы ваш метод бросал IllegalArgumentException если размер переданного массива
     // некорректен или вместо массива пришел null.
 
-    public static boolean getSize (int[] array) throws IllegalArgumentException{
-       // int[] newArr = new int[10];
-        if(array.length !=10  || array==null ){
-            throw new IllegalArgumentException("The size is not correct!");
+        public static boolean getArray (int[][] array) throws IllegalArgumentException {
+        if (array == null){
+            throw new IllegalArgumentException("The array is empty");
+        }
+
+        if (array.length != 10) {
+            throw new IllegalArgumentException("Height value is null or equal to zero");
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].length != 10) {
+                throw new IllegalArgumentException("Width value is null or equal to zero");
+            }
         }
         return true;
     }
