@@ -16,7 +16,6 @@ public class Main {
         int[] newArr = new int[10];
         int[][] newArr1 = new int[5][5];
 
-        System.out.println(getSize(newArr));
         System.out.println(getArray(newArr1));
 
     }
@@ -56,12 +55,12 @@ public class Main {
         }
 
         if (array.length != 10) {
-            throw new IllegalArgumentException("Height value is null or equal to zero");
+            throw new IllegalArgumentException("Height value is incorrect");
         }
 
         for (int i = 0; i < array.length; i++) {
             if (array[i].length != 10) {
-                throw new IllegalArgumentException("Width value is null or equal to zero");
+                throw new IllegalArgumentException("Width value is incorrect");
             }
         }
         return true;
