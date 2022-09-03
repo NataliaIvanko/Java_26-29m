@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) {
-	// Дан список  BankAccount {Peroson person, String IBAN, double balance). Используя stream необходимо вывести на экран все аккаунты,
-        // баланс которых составляет менее 100.
 
         BankAccount ba1 = new BankAccount(new Person("Jack", "Johnson", "jack@gmail.com"), "DE89 3704 0044 0532 0130 00", 105280.82);
         BankAccount ba2 = new BankAccount(new Person("Ray", "Sanders", "ray@gmail.com"), "DE84 5028 0058 0412 1285 48", 158560.44);
@@ -25,11 +23,13 @@ public class Main {
         System.out.println(sortedBankAccountList(bankAccounts, 100000));
 
 
-
     }
-    public static List<BankAccount>printAccountSumLessThanGiven(List<BankAccount> accounts, double balance){
+    // Дан список  BankAccount {Peroson person, String IBAN, double balance). Используя stream необходимо вывести на экран все аккаунты,
+    // баланс которых составляет менее 100.
+
+    public static List<BankAccount> printAccountSumLessThanGiven(List<BankAccount> accounts, double balance) {
         return accounts.stream()
-                .filter(ba -> ba.getBalance()<balance)
+                .filter(ba -> ba.getBalance() < balance)
                 .collect(Collectors.toList());
     }
     //Дан список  BankAccount {Peroson person, String IBAN, double balance), Person{String fName, String lName String email)
@@ -37,18 +37,17 @@ public class Main {
     // (т.е. ФИО; замаскированный счет, в котором открыты только первые 2 и последние 2 символа; email)  для всех клиентов,
     // чей баланс более 100000
 
-    public static List<String>sortedBankAccountList(List<BankAccount> accounts, double balance){
+    public static List<String> sortedBankAccountList(List<BankAccount> accounts, double balance) {
         return accounts.stream()
 
-                .filter(ba -> ba.getBalance()>balance)
+                .filter(ba -> ba.getBalance() > balance)
                 .sorted(Comparator.comparing(o -> o.getPerson().getlName()))
                 .map(s -> s.person.getlName()
-                        +" " + s.person.getfName().substring(0,1)+". ;"
-                        +"IBAN: "+ s.getIBAN().trim().substring(0,4) + "************" + s.getIBAN().trim().substring(s.getIBAN().length()-2) + "; "
-                        +s.person.getEmail())
-                 .collect(Collectors.toList());
-
-
-    }
+                        + " " + s.person.getfName().substring(0, 1) + ". ;"
+                        + "IBAN: " + s.getIBAN().trim().substring(0, 4) + "************" + s.getIBAN().trim().substring(s.getIBAN().length() - 2) + "; "
+                        + s.person.getEmail())
+                .collect(Collectors.toList());
 
     }
+
+}
