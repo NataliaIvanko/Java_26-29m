@@ -43,8 +43,8 @@ public class Main {
                 .filter(ba -> ba.getBalance() > balance)
                 .sorted(Comparator.comparing(o -> o.getPerson().getlName()))
                 .map(s -> s.person.getlName()
-                        + " " + s.person.getfName().substring(0, 1) + ". ;"
-                        + "IBAN: " + s.getIBAN().trim().substring(0, 4) + "************" + s.getIBAN().trim().substring(s.getIBAN().length() - 2) + "; "
+                        + " " + s.person.getfName().substring(0, 1) + ".; "
+                        + "IBAN: " + s.getIBAN().trim().substring(0, 4) +"*".repeat(s.getIBAN().replace(" ","").length() - 6)+s.getIBAN().trim().substring(s.getIBAN().length() - 2,s.getIBAN().length()) + "; "
                         + s.person.getEmail())
                 .collect(Collectors.toList());
 
