@@ -12,10 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Дан список Programmer(String name, String city, List<Task>  tasks). Каждый программист  имеет список задач
-        // Task (int Number, String description, String status, int daysInProcessing) . Сформировать лист из всех задач,
-        // которые относятся к программистам из Берлина, не завершены (т.е. имеют статус, отличный от «done») и висят
-        // в обработке более 5 дней.
+
         List<Task> tasks = new ArrayList<>();
 
         Task task1 = new Task(1, "write code for a new programme", "in process", 8);
@@ -39,7 +36,7 @@ public class Main {
         List<String> list = List.of("Иванов Иван Иванович: 645", "Петров Петр Петрович: 458", "Ерофеев Ерофей Ерофеевич: 867", "Миронов Мирон Миронович: 783");
 
 
-         System.out.println(tasksStillInProcessLongerThan6Days(programmers));
+         System.out.println(tasksStillInProcessLongerThan6Days(programmers, 5));
          System.out.println(taskTheLongestInProcess(programmers));
          System.out.println(taskAndDaysInProcess(programmers));
          System.out.println(sortedListMoreThan500(list, 500));
@@ -47,12 +44,16 @@ public class Main {
 
 
     }
+    // Дан список Programmer(String name, String city, List<Task>  tasks). Каждый программист  имеет список задач
+    // Task (int Number, String description, String status, int daysInProcessing) . Сформировать лист из всех задач,
+    // которые относятся к программистам из Берлина, не завершены (т.е. имеют статус, отличный от «done») и висят
+    // в обработке более 5 дней.
 
-    public static List<Task> tasksStillInProcessLongerThan6Days(List<Programmer> pr) {
+    public static List<Task> tasksStillInProcessLongerThan6Days(List<Programmer> pr, int days) {
         return pr.stream()
                 .filter(p -> p.getCity().equals("Berlin"))
                 .flatMap(p -> p.getTasks().stream())
-                .filter(t -> !t.getStatus().equals("done") && t.getDaysInProcess() > 5)
+                .filter(t -> !t.getStatus().equals("done") && t.getDaysInProcess() > days)
                 .collect(Collectors.toList());
     }
     //  Дан список Programmer(String name, String city, List<Task>  tasks). Каждый программист  имеет список задач
