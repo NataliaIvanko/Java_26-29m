@@ -75,6 +75,7 @@ public class Main {
                         .stream()
                         .sorted(Comparator.comparing(Student::getRate, Comparator.reverseOrder())).limit(3))
                 .collect(Collectors.toMap(Student::getLastName, Student:: getRate));
+         //       .collect(Collectors.toMap(s->s.getLastName()+" "+s.getFirstName().substring(0,1)+".", Student:: getRate));
 
 
     }
