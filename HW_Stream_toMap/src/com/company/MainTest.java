@@ -27,14 +27,14 @@ public class MainTest {
     }
 
     @Test
-    void getMap_null() {
+    void getMap_nullString() {
         String str = null;
         Map<String, Integer> map = Map.of();
         assertEquals(map, Main.KeyWordValueCountWords(str));
     }
 
     @Test
-    void getMap_empty() {
+    void getMap_emptyString() {
         String str = "";
         Map<String, Integer> map = Map.of();
         assertEquals(map, Main.KeyWordValueCountWords(str));
