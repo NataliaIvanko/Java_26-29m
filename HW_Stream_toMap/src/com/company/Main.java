@@ -42,7 +42,7 @@ public class Main {
 
         System.out.println(groups);
 
-       System.out.println(FromAllGroups(groups));
+       System.out.println(MapThreeStudentsFromEachGroup(groups));
 
     }
     // 1.     Дана строка (для простоты можно считать,  слова разделены одним пробелом и строка не содержит знаков препинание и т.д.).
@@ -71,7 +71,7 @@ public class Main {
 // В map должны попасть первые 3 самых успевающих студента из каждой группы. В данной задаче, предполагается, что студентов-однофамильцев нет.
 
 
-    public static Map<String, Double> FromAllGroups(List<Group>groups){
+    public static Map<String, Double> MapThreeStudentsFromEachGroup(List<Group>groups){
         return groups.stream()
             .flatMap(gr->gr.getStudents()
                         .stream()
