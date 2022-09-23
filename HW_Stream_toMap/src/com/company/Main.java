@@ -49,8 +49,10 @@ public class Main {
     // Используя стрим, получить map<String, Integer> где ключ – слово, значение – сколько раз это слово встречается в строке.
 
     public static Map<String, Integer>KeyWordValueCountWords(String str){
+        if(str == null || str.isEmpty()) return Map.of();
+
         Map<String, Integer> result = Arrays.stream(str.toLowerCase().split(" "))
-                .collect(Collectors.toMap(word-> word, word->1, Integer::sum));
+                .collect(Collectors.toMap(word-> word, word->1, (a, b) -> Integer.sum(a, b)));
 
 
         return result;
@@ -71,7 +73,7 @@ public class Main {
 
     public static Map<String, Double> FromAllGroups(List<Group>groups){
         return groups.stream()
-                .flatMap(gr->gr.getStudents()
+            .flatMap(gr->gr.getStudents()
                         .stream()
                         .sorted(Comparator.comparing(Student::getRate, Comparator.reverseOrder())).limit(3))
                 .collect(Collectors.toMap(Student::getLastName, Student:: getRate));
