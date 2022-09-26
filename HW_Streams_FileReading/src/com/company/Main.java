@@ -1,9 +1,6 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,7 +25,8 @@ public class Main {
 
         //3
         Path path = Paths.get("C:\\Java\\Java_26-29m\\HW_Streams_FileReading\\src\\com\\company\\LinesToMerge.txt");
-        System.out.println(mergeStrings(path));
+        System.out.println(readFileAndMergeStrings(path));
+        System.out.println(readFileAndMergeStrings2(path));
 
         //4
         String contents = Files.readString(Paths.get("C:\\Java\\Java_26-29m\\HW_Streams_FileReading\\src\\com\\company\\WarAndPeace.txt"));
@@ -58,15 +56,15 @@ public class Main {
     //3.Path path = Paths.get(путьдофайла);
     //Прочитать все строки текстового файла и объединить их в одну строку
 
-    public static String mergeStrings(Path path) {
+    public static String readFileAndMergeStrings(Path path) {
         StringBuilder sb = new StringBuilder();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(path)));
 
-            String line = reader.readLine(); //readLine returns null when there are no more lines
-            while (line != null) {
-                sb.append(line + " ");
-                line = reader.readLine();
+          String line = reader.readLine(); //readLine returns null when there are no more lines
+            while (line!= null) {
+                sb.append(line).append(" ");
+              line = reader.readLine();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -76,6 +74,23 @@ public class Main {
         return sb.toString();
 
     }
+    //Option2
+
+    public static String readFileAndMergeStrings2(Path path) throws IOException {
+        String line="";
+        try  {
+            BufferedReader reader = new BufferedReader(new FileReader(new File(String.valueOf(path))));
+            line= reader.lines().collect(Collectors.joining(" "));
+        }catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+  return line;
+
+
+}
+
 //String contents = new String(Files.readAllBytes(Paths.get("src/main/java/WarAndPease.txt")), StandardCharsets.UTF_8);
 // - "src/main/java/WarAndPease.txt это ссылка на какой либо текст.
 //
