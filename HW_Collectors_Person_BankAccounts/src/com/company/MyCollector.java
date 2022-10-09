@@ -7,20 +7,23 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-public class MyCollector implements Collector<List<Object>, Map<String, List<String>>,List<Object> > {
+public class MyCollector implements Collector<BankAccountWithOwner, Map<String, List<String>>, List<PersonWithBankAccounts>>{
+
 
     @Override
     public Supplier<Map<String, List<String>>> supplier() {
-        return HashMap::new;
+        return HashMap:: new;
     }
 
+
+
     @Override
-    public BiConsumer<Map<Person, List<String>>, BankAccountWithOwner> accumulator() {//accepts two input arguments and returns no result
-      return (map, ac) -> {
-          List<String> list = new ArrayList<>();
-          list.add(ac.getIban());
-          map.put(ac.getOwner().getName(), list);
-      } ;
+    public BiConsumer<Map<String, List<String>>, BankAccountWithOwner> accumulator() {
+        return (map, obj) -> {
+            List<String> list = new ArrayList<>();
+            list.add(obj.getIban());
+            map.put(obj.getOwner().getName(), list); // Будет ошибка? Будет создаваться каждый раз новый лист?
+        };
     }
 
     @Override
@@ -29,7 +32,7 @@ public class MyCollector implements Collector<List<Object>, Map<String, List<Str
     }
 
     @Override
-    public Function<Map<String, List<String>>, List<Object>> finisher() {
+    public Function<Map<String, List<String>>, List<PersonWithBankAccounts>> finisher() {
         return null;
     }
 
@@ -38,3 +41,5 @@ public class MyCollector implements Collector<List<Object>, Map<String, List<Str
         return null;
     }
 }
+
+
