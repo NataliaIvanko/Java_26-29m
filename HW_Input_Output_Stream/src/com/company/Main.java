@@ -70,7 +70,6 @@ public class Main {
        boolean isJpeg = true;
        boolean isJava = true;
 
-
        String str = "other";
 
         try {
