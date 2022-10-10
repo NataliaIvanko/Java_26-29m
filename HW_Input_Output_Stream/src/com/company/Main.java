@@ -11,22 +11,22 @@ public class Main {
         // Ваша программа  должна записать в отдельный файл первые 601 байт, затем в отдельный файл записать следующие 57053 байта
         // и оставшиеся 22494 байта записать в следующий файл. Если все сделано правильно, у вас должно получиться 3 файла.
 
-   //  writeThreeFiles();
+    writeThreeFiles();
 
-     System.out.println(readAWord("file1.dat"));
+        // The word is excellent
+
+     System.out.println(readAWord("Main.class"));
      System.out.println(readAWord("file2.dat"));
      System.out.println(readAWord("file3.dat"));
      System.out.println(readAWord("pic .gif"));
      System.out.println(readAWord("Cat_pic.jpg"));
-
-
 
     }
 
     public static void writeThreeFiles() throws IOException {
         try (InputStream is = new BufferedInputStream(new FileInputStream("file.dat"));
 
-             OutputStream os = new BufferedOutputStream(new FileOutputStream("file1.dat"));) {
+             OutputStream os = new BufferedOutputStream(new FileOutputStream("Main.class"));) {
             int count = 0;
             int data;
 
@@ -78,7 +78,7 @@ public class Main {
             int data;
             while((data = is.read()) != -1 && count< 6){
                 //47 49 46 38 39 61
-                System.out.println(data);
+            //    System.out.println(data);
                 if (count == 0){
                     if(data != 71) isGif = false;
                      if(data != 255)  isJpeg = false;
@@ -104,7 +104,9 @@ public class Main {
                     if (data != 97) isGif = false;
                 }
                 count++;
+                System.out.println(data);
             }
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -118,6 +120,9 @@ public class Main {
 
     }
 
+        }
 
-    }
+
+
+
 
