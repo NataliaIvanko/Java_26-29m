@@ -30,7 +30,7 @@ public class Main {
             int count = 0;
             int data;
 
-            while ((data = is.read()) != -1 && count <= 601 ) {
+            while ((data = is.read()) != -1 && count < 600 ) {
                 count++;
                 os.write(data);
 
