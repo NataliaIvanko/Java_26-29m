@@ -33,13 +33,13 @@ public class MyCollector implements Collector<BankAccountWithOwner, Map<String, 
 
     @Override
     public Function<Map<String, List<String>>, List<PersonWithBankAccounts>> finisher() {
-        return (map) -> {
+         return  (map)->{
             List<PersonWithBankAccounts> res = new ArrayList<>();
-            for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-                res.add(new PersonWithBankAccounts(entry.getKey(), entry.getValue()));
-            }
-            return res;
+            map.entrySet().forEach(p ->res.add(new PersonWithBankAccounts(p.getKey(), p.getValue())));
+           return res;
         };
+         //map.forEach((key, value) -> res.add(new PersonWithBankAccounts(key, value)));
+
     }
 
     @Override
