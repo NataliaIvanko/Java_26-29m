@@ -27,7 +27,7 @@ public class MyCollector implements Collector<BankAccountWithOwner, Map<String, 
     }
 
     @Override
-    public BinaryOperator<Map<String, List<String>>> combiner() {
+    public BinaryOperator<Map<String, List<String>>> combiner() { //what do we combine here?
         return null;
     }
 
