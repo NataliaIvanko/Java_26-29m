@@ -10,13 +10,13 @@ public class Main2 {
         while(true){
             String firstName = readFile("Name: ");
 
-            String age = getConsoleMessage("How old are you: ");
+            String age = consoleInput("How old are you: ");
 
             String person = String.format("%s-%s", firstName, age);
             write(person);
 
-            String option = getConsoleMessage("Another one?");
-            if(option.equalsIgnoreCase("no")) {
+            String option = consoleInput("Another one?");
+            if(option.equalsIgnoreCase("no")) {  //ignoring lower case and upper case differences
                 break;
             }
         }
@@ -28,7 +28,7 @@ public class Main2 {
          */
     }
 
-    private static String getConsoleMessage(String str){
+    private static String consoleInput(String str){
         System.out.println(str);
         return new Scanner(System.in).nextLine();
     }
