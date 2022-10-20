@@ -8,15 +8,15 @@ public class Main2 {
     public static void main(String[] args) throws IOException {
 
         while(true){
-            String firstName = readFile("Name: ");
+            String firstName = readFile();
 
             String age = consoleInput("How old are you: ");
 
             String person = String.format("%s-%s", firstName, age);
             write(person);
 
-            String option = consoleInput("Another one?");
-            if(option.equalsIgnoreCase("no")) {  //ignoring lower case and upper case differences
+            String end = consoleInput("Shall we stop here?");
+            if(end.equalsIgnoreCase("yes")) {  //ignoring lower case and upper case differences
                 break;
             }
         }
@@ -32,7 +32,7 @@ public class Main2 {
         System.out.println(str);
         return new Scanner(System.in).nextLine();
     }
-    public static String readFile(String text) throws IOException {
+    public static String readFile() throws IOException {
       //  System.out.println(text);
         BufferedReader bufferedReader = new BufferedReader(new FileReader("1.txt"));
 
@@ -53,10 +53,11 @@ public class Main2 {
             }
         }
         return sb.toString();
+
     }
+
     private static void write(String message) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("1.txt"));
-
         bufferedWriter.write(message);
         bufferedWriter.write("\n");
         bufferedWriter.flush();
