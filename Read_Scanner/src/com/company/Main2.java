@@ -16,7 +16,7 @@ public class Main2 {
             write(person);
 
             String end = consoleInput("Shall we stop here?");
-            if(end.equalsIgnoreCase("yes")) {  //ignoring lower case and upper case differences
+            if(end.equalsIgnoreCase("yes")) {
                 break;
             }
         }
