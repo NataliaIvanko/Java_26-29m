@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main2 {
     public static void main(String[] args) throws IOException {
 
-        while(true){
+        while (true) {
             String firstName = readFile();
 
             String age = consoleInput("How old are you: ");
@@ -16,7 +16,7 @@ public class Main2 {
             write(person);
 
             String end = consoleInput("Shall we stop here?");
-            if(end.equalsIgnoreCase("yes")) {
+            if (end.equalsIgnoreCase("yes")) {
                 break;
             }
         }
@@ -28,33 +28,30 @@ public class Main2 {
          */
     }
 
-    private static String consoleInput(String str){
+    private static String consoleInput(String str) {
         System.out.println(str);
         return new Scanner(System.in).nextLine();
     }
-    public static String readFile() throws IOException {
-      //  System.out.println(text);
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("1.txt"));
 
-        String line;
+    public static String readFile() {
+        //  System.out.println(text);
         StringBuilder sb = new StringBuilder();
-
-        while(true){
-            try {
-                line = bufferedReader.readLine();
-                if (line == null || line.isEmpty()) {
-                    break;
-                }
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("1.txt"))) {
+          String line;
+           while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
                 sb.append(line);
                 sb.append('\n');
-            } catch (IOException e) {
-                e.printStackTrace();
+
             }
+          } catch (IOException ioException) {
+            ioException.printStackTrace();
         }
         return sb.toString();
-
     }
+
+
+
 
     private static void write(String message) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("1.txt"));
