@@ -15,7 +15,7 @@ public class Main2 {
             String person = String.format("%s-%s", firstName, age);
             write(person);
 
-            String option = getConsoleMessage("Want another?");
+            String option = getConsoleMessage("Another one?");
             if(option.equalsIgnoreCase("no")) {
                 break;
             }
@@ -28,8 +28,8 @@ public class Main2 {
          */
     }
 
-    private static String getConsoleMessage(String caption){
-        System.out.println(caption);
+    private static String getConsoleMessage(String str){
+        System.out.println(str);
         return new Scanner(System.in).nextLine();
     }
     public static String readFile(String text) throws IOException {
