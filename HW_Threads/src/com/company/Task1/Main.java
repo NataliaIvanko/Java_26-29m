@@ -18,14 +18,14 @@ public class Main {
         Random random = new Random(System.currentTimeMillis());
 
         Instant start = Instant.now();
-  /*
+
         for (int i = 0; i < 100_000_000; i++) {
             array[i] = random.nextInt();
         }
 
-   */
+
         Instant finish = Instant.now();
- /*
+
         System.out.println("one thread: " + ChronoUnit.MILLIS.between(start, finish));
 
         Runnable runnable1 = () -> {
@@ -49,7 +49,7 @@ public class Main {
         finish = Instant.now();
 
         System.out.println("two threads: " + ChronoUnit.MILLIS.between(start, finish));
-*/
+
         Runnable runnable_1 = () -> {
             for (int i = 0; i <20_000_000; i++) {
                 array[i] = random.nextInt();
