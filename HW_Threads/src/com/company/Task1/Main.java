@@ -16,22 +16,25 @@ public class Main {
 
         int[] array = new int[100_000_000];
         Random random = new Random(System.currentTimeMillis());
-        Instant start = Instant.now();
 
+        Instant start = Instant.now();
+  /*
         for (int i = 0; i < 100_000_000; i++) {
             array[i] = random.nextInt();
         }
-        Instant finish = Instant.now();
 
+   */
+        Instant finish = Instant.now();
+ /*
         System.out.println("one thread: " + ChronoUnit.MILLIS.between(start, finish));
 
         Runnable runnable1 = () -> {
-            for (int i = 0; i <500_000; i++) {
+            for (int i = 0; i <50_000_000; i++) {
                 array[i] = random.nextInt();
             }
         };
         Runnable runnable2 = () -> {
-            for (int i = 500_000; i < 100_000_000;i++) {
+            for (int i = 50_000_000; i < 100_000_000;i++) {
                 array[i] = random.nextInt();
             }
         };
@@ -46,29 +49,29 @@ public class Main {
         finish = Instant.now();
 
         System.out.println("two threads: " + ChronoUnit.MILLIS.between(start, finish));
-
+*/
         Runnable runnable_1 = () -> {
-            for (int i = 0; i <200_000; i++) {
+            for (int i = 0; i <20_000_000; i++) {
                 array[i] = random.nextInt();
             }
         };
         Runnable runnable_2 = () -> {
-            for (int i = 200_000; i < 400_000;i++) {
+            for (int i = 20_000_000; i < 40_000_000;i++) {
                 array[i] = random.nextInt();
             }
         };
         Runnable runnable_3 = () -> {
-            for (int i = 400_000; i < 600_000;i++) {
+            for (int i = 40_000_000; i < 60_000_000;i++) {
                 array[i] = random.nextInt();
             }
         };
         Runnable runnable_4 = () -> {
-            for (int i = 600_000; i < 800_000;i++) {
+            for (int i = 60_000_000; i < 80_000_000;i++) {
                 array[i] = random.nextInt();
             }
         };
         Runnable runnable_5 = () -> {
-            for (int i = 800_000; i < 100_000_000;i++) {
+            for (int i = 80_000_000; i < 100_000_000;i++) {
                 array[i] = random.nextInt();
             }
         };
@@ -84,7 +87,7 @@ public class Main {
         t_3.start();
         t_4.start();
         t_5.start();
-        t_1.join(); //it works faster without joins
+        t_1.join();
         t_2.join();
         t_3.join();
         t_4.join();
