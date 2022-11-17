@@ -38,7 +38,8 @@ public class WatchServiceHW2 {
                     place = Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file).toString();
 
                 } catch (FileSystemException e) {
-                    Files.createDirectory(Paths.get(mainDir + "\\" + checkFileExtension(file.toString())));//не успеваю переназвать, при создании ошибка файл существует в дест папке
+                    Files.createDirectory(Paths.get(mainDir + "\\" + checkFileExtension(file.toString())));//Если не переношу файл в папку, за которой наблюдает watchS., а создаю прямо в ней, то
+                    // не успеваю переназвать, при создании ошибка -  файл существует в destination папке
                     Files.move(Path.of(directory + "\\" + file), Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file));
 
                     place = Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file).toString();
