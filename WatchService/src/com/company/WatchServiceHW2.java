@@ -33,13 +33,13 @@ public class WatchServiceHW2 {
             for (WatchEvent<?> event : watchKey.pollEvents()) {
                 Path file = (Path) event.context();
                 try {
-                    Files.move(Path.of(directory + "\\" + file), Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file));
+                    Files.move(Path.of(directory + "\\" + file), Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file));//Если не переношу файл в папку, за которой наблюдает watchS.,
+                    // а создаю прямо в ней, то не успеваю переназвать, при создании ошибка -  файл существует в destination папке
 
                     place = Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file).toString();
 
                 } catch (FileSystemException e) {
-                    Files.createDirectory(Paths.get(mainDir + "\\" + checkFileExtension(file.toString())));//Если не переношу файл в папку, за которой наблюдает watchS., а создаю прямо в ней, то
-                    // не успеваю переназвать, при создании ошибка -  файл существует в destination папке
+                    Files.createDirectory(Paths.get(mainDir + "\\" + checkFileExtension(file.toString())));
                     Files.move(Path.of(directory + "\\" + file), Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file));
 
                     place = Path.of(mainDir + "\\" + checkFileExtension(file.toString()) + "\\" + file).toString();
