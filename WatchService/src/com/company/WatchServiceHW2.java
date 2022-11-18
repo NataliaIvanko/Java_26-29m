@@ -29,7 +29,7 @@ public class WatchServiceHW2 {
 
         while (true) {
 
-            String command = getConsoleMessage("Enter a command: exit to exit, list to get a list");
+            String command = getConsoleMessage("Enter a command: exit to exit the programme, list to get the list of the processed files");
             for (WatchEvent<?> event : watchKey.pollEvents()) {
                 Path file = (Path) event.context();
                 try {
